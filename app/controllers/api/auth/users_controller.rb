@@ -3,18 +3,10 @@ module Api
     class UsersController < ApplicationController
       skip_before_action :verify_authenticity_token, only: [:create]
 
-      def index
-        render :json => {"name": "Naonao", "age": 5.5}
-      end
-
       def show
         user = User.find(params[:id])
         render :json => user
       end
-
-      # def create
-      #   render :json => {"name": params}
-      # end
 
       def create
         user = User.new(user_params)
