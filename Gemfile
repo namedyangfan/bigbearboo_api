@@ -10,6 +10,7 @@ end
 gem 'rails', '~> 5.1.5'
 gem 'bcrypt', '~> 3.1.11'
 gem 'rack-cors'
+gem 'jwt'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
