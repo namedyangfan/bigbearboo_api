@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
       controller :sessions do
         post '/login', action: :create
+        post '/logout', action: :destroy
       end
     end
   end

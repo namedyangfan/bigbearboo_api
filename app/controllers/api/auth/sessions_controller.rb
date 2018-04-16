@@ -13,6 +13,9 @@ module Api
         end
       end
 
+      def destroy
+        user.forget
+        head 204
     end
   end
 end
