@@ -2,6 +2,11 @@ module AuthenticationConcern
   extend ActiveSupport::Concern
 
   def authenticate_current_user
+    Rails.logger.debug "@@@@@"
+    Rails.logger.debug "@@@@@"
+    Rails.logger.debug "@@@@@"
+    Rails.logger.debug params
+
     render json: { errors: "Not authenticated" },
             status: :unauthorized unless current_user.present?
   end
