@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :auth do
       controller :users do
         post '/signup', action: :create
+        get '/user', action: :show
       end
 
       controller :sessions do

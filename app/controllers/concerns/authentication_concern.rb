@@ -1,10 +1,6 @@
 module AuthenticationConcern
   extend ActiveSupport::Concern
 
-  included do
-    helper_method :current_user
-  end
-
   def authenticate_current_user
     render json: { errors: "Not authenticated" },
             status: :unauthorized unless current_user.present?
@@ -12,6 +8,10 @@ module AuthenticationConcern
 
   def current_user
     return @current_user if defined?(@current_user)
-    @current_user ||= User.find_by(remember_digest: request.headers['Authorization'])
-
+    token = request.headers['HTTP_AUTH_TOKEN'] || params[:auth_token]
+    user = User.find_by(id: params[:user_id])
+    if user && user.authenticated?(token)
+      @current_user = user
+    end
   end
+end

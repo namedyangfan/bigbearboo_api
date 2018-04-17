@@ -2,10 +2,10 @@ module Api
   module Auth
     class UsersController < ApplicationController
       skip_before_action :verify_authenticity_token, only: [:create]
+      before_action :authenticate_current_user, only: [:show]
 
       def show
-        user = User.find(params[:id])
-        render :json => user
+          render :json => @current_user
       end
 
       def create
