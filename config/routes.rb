@@ -7,9 +7,11 @@ Rails.application.routes.draw do
       end
 
       controller :sessions do
+        get '/authenticate', action: :authenticate
         post '/login', action: :create
         delete '/logout', action: :destroy
       end
+
     end
   end
 

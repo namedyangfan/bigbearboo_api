@@ -2,7 +2,7 @@ module Api
   module Auth
     class SessionsController < ApplicationController
       skip_before_action :verify_authenticity_token, only: [:create, :destroy]
-      before_action :authenticate_current_user, only: [:destroy]
+      before_action :authenticate_current_user, only: [:authenticate]
 
       def create
         user = User.find_by(email: params[:email].downcase)
@@ -16,12 +16,15 @@ module Api
 
       def destroy
         if @current_user.forget
-          render json: {}, status: 200
+          render json: { message: "log out success" }, status: 200
         else
           render json: { errors: "Not authenticated" }, status: :unauthorized
         end
       end
 
+      def authenticate
+        render json: @current_user
+      end
     end
   end
 end
