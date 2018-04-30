@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
   scope module: 'api' do
     namespace :auth do
-      resources :users
+      controller :users do
+        post '/signup', action: :create
+        get '/user', action: :show
+      end
+
+      controller :sessions do
+        get '/authenticate', action: :authenticate
+        post '/login', action: :create
+        delete '/logout', action: :destroy
+      end
+
     end
   end
 
