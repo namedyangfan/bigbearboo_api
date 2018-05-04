@@ -8,7 +8,7 @@ module Api
         user = User.find_by(email: params[:email].downcase)
         if user && user.authenticate(params[:password])
           user.remember
-          render json: {:token => user.remember_token, :user_id => user.id}, status: 200
+          render json: UserPresenter.new(user, view_context).auth_hash, status: 200
         else
           render json: {:error => 'Invalid email/password combination'}, status: :unprocessable_entity
         end
@@ -23,7 +23,7 @@ module Api
       end
 
       def authenticate
-        render json: @current_user
+        render json: UserPresenter.new(@current_user, view_context).basic_hash
       end
     end
   end
