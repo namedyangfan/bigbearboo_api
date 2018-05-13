@@ -17,7 +17,13 @@ Rails.application.routes.draw do
       controller :products do
         get '/products', action: :index
         post '/products', action: :create
-        patch '/products/:product_id/update_name', action: :update_name
+        patch '/products/:product_id', action: :update
+      end
+
+      controller :product_attributes do
+        get '/product_attributes', action: :index
+        post '/product_attributes/:product_id', action: :create
+        patch '/product_attributes/:product_attribute_id', action: :update_attributes
       end
     end
 
