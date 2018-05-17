@@ -7,8 +7,11 @@ module Api
           @product = @productAttribute.product
         elsif params[:product_id].present?
           @product = Product.find_by! id: params[:product_id]
+        else
+          render_json_error 'Invalid parameters.', status: 400
         end
       end
+
     end
   end
 end

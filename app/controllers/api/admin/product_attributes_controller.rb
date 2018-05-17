@@ -1,14 +1,14 @@
 module Api
   module Admin
-    class ProductsController < ApiController
-      before_action :get_product, only: [:update, :destroy]
-      skip_before_action :verify_authenticity_token, only: [:create, :update]
+    class ProductAttributesController < ApiController
+      before_action :get_product, only: [:create, :update, :destroy]
+      skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
 
       def index
         Rails.logger.debug "$$$$$$"
         Rails.logger.debug params
         Rails.logger.debug "$$$$$$"
-        render json: Product.all
+        render json: ProductAttribute.all
       end
 
       def create
@@ -22,12 +22,16 @@ module Api
         if @productAttribute.save
           render json: @productAttribute
         else
-          render json: { error: product.errors.full_messages.to_sentence }, status: 403
+          render json: { error: @product.errors.full_messages.to_sentence }, status: 403
         end
       end
 
       def update
-        if @productAttribute.update product_attributes_params
+        update_hash = product_attribute_params.merge!({
+          :quantity_on_hand => product_attribute_params[:quantity_owned]
+          })
+
+        if @productAttribute.update update_hash
           render json: @productAttribute
         else
           render json: { error: @productAttribute.errors.full_messages.to_sentence }, status: 403
@@ -35,6 +39,11 @@ module Api
       end
 
       def destroy
+        if @productAttribute.destroy
+          head :no_content
+        else
+          render json: { error: @productAttribute.errors.full_messages.to_sentence }, status: 403
+        end
       end
 
       private

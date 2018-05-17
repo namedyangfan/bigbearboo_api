@@ -2,7 +2,7 @@ module Api
   module Admin
     class ProductsController < ApiController
       before_action :get_product, only: [:update, :destroy]
-      skip_before_action :verify_authenticity_token, only: [:create, :update]
+      skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
 
       def index
         Rails.logger.debug "$$$$$$"
@@ -36,6 +36,11 @@ module Api
       end
 
       def destroy
+        if @product.destroy
+          head :no_content
+        else
+          render json: { error: @product.errors.full_messages.to_sentence }, status: 403
+        end
       end
 
       private

@@ -18,12 +18,14 @@ Rails.application.routes.draw do
         get '/products', action: :index
         post '/products', action: :create
         patch '/products/:product_id', action: :update
+        delete '/products/:product_id', action: :destroy
       end
 
       controller :product_attributes do
         get '/product_attributes', action: :index
         post '/product_attributes/:product_id', action: :create
-        patch '/product_attributes/:product_attribute_id', action: :update_attributes
+        patch '/product_attributes/:product_attribute_id', action: :update
+        delete '/product_attributes/:product_attribute_id', action: :destroy
       end
     end
 
