@@ -1,14 +1,14 @@
 module Api
   module Admin
     class ProductAttributesController < ApiController
-      before_action :get_product, only: [:create, :update, :destroy]
+      before_action :get_product, only: [:show, :create, :update, :destroy]
       skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
 
-      def index
+      def show
         Rails.logger.debug "$$$$$$"
         Rails.logger.debug params
         Rails.logger.debug "$$$$$$"
-        render json: ProductAttribute.all
+        render json: @productAttribute
       end
 
       def create
