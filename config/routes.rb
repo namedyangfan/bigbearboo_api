@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     namespace :admin do
       controller :products do
         get '/products/:product_id', action: :show
+        get '/products', action: :index
         post '/products', action: :create
         patch '/products/:product_id', action: :update
         delete '/products/:product_id', action: :destroy
@@ -26,6 +27,12 @@ Rails.application.routes.draw do
         post '/product_attributes/:product_id', action: :create
         patch '/product_attributes/:product_attribute_id', action: :update
         delete '/product_attributes/:product_attribute_id', action: :destroy
+      end
+    end
+
+    namespace :home do
+      controller :products do
+        get '/products', action: :index
       end
     end
 

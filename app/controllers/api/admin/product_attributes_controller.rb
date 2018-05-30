@@ -5,9 +5,7 @@ module Api
       skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
 
       def show
-        Rails.logger.debug "$$$$$$"
         Rails.logger.debug params
-        Rails.logger.debug "$$$$$$"
         render json: @productAttribute
       end
 

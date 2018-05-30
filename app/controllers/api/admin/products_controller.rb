@@ -4,6 +4,22 @@ module Api
       before_action :get_product, only: [:show, :update, :destroy]
       skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
 
+      def index
+        products = Product.all
+
+        products_basic_hash = products.map{ |product| ProductPresenter.new(product, view_context).basic_hash}
+        Rails.logger.debug('@@@@@')
+        Rails.logger.debug('@@@@@')
+        Rails.logger.debug(ProductPresenter.new(Product.first,view_context).basic_hash.keys)
+
+        data = {
+          :keys=> ProductPresenter.new(Product.first,view_context).basic_hash.keys, 
+          :products=>products_basic_hash
+        }
+
+        render json: data
+      end  
+
       def show
         render json: @product
       end
