@@ -2,7 +2,7 @@ module Api
   module Auth
     class SessionsController < ApplicationController
       skip_before_action :verify_authenticity_token, only: [:create, :destroy]
-      before_action :authenticate_current_user, only: [:authenticate]
+      before_action :authenticate_current_user, only: [:authenticate, :destroy]
 
       def create
         user = User.find_by(email: params[:email].downcase)

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: 1
+  size: 1.5
+  color: MyString
+  quantity_owned: 1
+  quantity_on_hand: 1
+  quantity_picked: 1
+
+two:
+  product_id: 1
+  size: 1.5
+  color: MyString
+  quantity_owned: 1
+  quantity_on_hand: 1
+  quantity_picked: 1
