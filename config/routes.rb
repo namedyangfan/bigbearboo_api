@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     namespace :home do
       controller :products do
         get '/products', action: :index
+        get '/products/:product_id', action: :show
       end
     end
 

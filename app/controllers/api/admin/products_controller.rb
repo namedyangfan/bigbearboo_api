@@ -8,8 +8,6 @@ module Api
         products = Product.all
 
         products_basic_hash = products.map{ |product| ProductPresenter.new(product, view_context).basic_hash}
-        Rails.logger.debug('@@@@@')
-        Rails.logger.debug('@@@@@')
         Rails.logger.debug(ProductPresenter.new(Product.first,view_context).basic_hash.keys)
 
         data = {
@@ -21,7 +19,7 @@ module Api
       end  
 
       def show
-        render json: @product
+        render json: ProductPresenter.new(@product,view_context).full_hash_attributes
       end
 
       def create
@@ -60,7 +58,7 @@ module Api
       private
 
       def product_params
-        params.permit(:name, :description, :detail, :category, :picture)
+        params.permit(:name, :description, :detail, :category, :picture, :price)
       end
 
     end
