@@ -3,7 +3,8 @@ class ProductAttributePresenter < BasePresenter
     {
       id:    id,
       size:  size,
-      color: color
+      color: color,
+      picture: picture
     }
   end
 
