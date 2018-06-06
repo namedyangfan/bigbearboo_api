@@ -1,9 +1,8 @@
 class ProductAttributePresenter < BasePresenter
   def basic_hash
     {
-      id:    id,
-      size:  size,
-      color: color,
+      product_attribute_id:    id,
+      name: name,
       picture: picture
     }
   end

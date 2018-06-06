@@ -14,7 +14,7 @@ module Api
       def show
         product = Product.find_by! id: params[:product_id]
 
-        product_full_hash = ProductPresenter.new(product, view_context).full_hash
+        product_full_hash = ProductPresenter.new(product, view_context).full_hash_attributes
 
         render json: product_full_hash
       end  

@@ -1,8 +1,8 @@
 module Api
   module Admin
     class ProductAttributesController < ApiController
-      before_action :get_product, only: [:show, :create, :update, :destroy]
-      skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
+      before_action :get_product, only: [:show, :create, :update, :destroy, :post]
+      skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy, :post]
 
       def show
         Rails.logger.debug params
@@ -10,9 +10,13 @@ module Api
       end
 
       def create
+        Rails.logger.debug params
+        Rails.logger.debug '@@@@@@@@@'
+        Rails.logger.debug '@@@@@@@@@'
+        Rails.logger.debug '@@@@@@@@@'
         @productAttribute = @product.product_attributes.build \
-          size: product_attribute_params[:size],
-          color: product_attribute_params[:color],
+          name: product_attribute_params[:name],
+          picture: product_attribute_params[:picture],
           quantity_owned: product_attribute_params[:quantity_owned],
           quantity_on_hand: product_attribute_params[:quantity_owned],
           quantity_picked: 0
@@ -47,7 +51,7 @@ module Api
       private
 
       def product_attribute_params
-        params.permit(:size, :color, :quantity_owned)
+        params.permit(:name, :picture, :quantity_owned)
       end
 
     end
