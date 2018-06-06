@@ -5,8 +5,8 @@ class ProductPresenter < BasePresenter
 
   def basic_hash
     {
-      id:    id,
-      name:  name,
+      product_id: id,
+      name: name,
       description: description,
       category: category,
       picture: picture
@@ -21,7 +21,7 @@ class ProductPresenter < BasePresenter
   end
 
   def full_hash_attributes
-    basic_hash.merge({
+    full_hash.merge({
       attributes: get_attributes
     })
   end
