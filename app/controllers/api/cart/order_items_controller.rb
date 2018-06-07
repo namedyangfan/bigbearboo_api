@@ -19,10 +19,10 @@ module Api
       end
 
       def update
-        @order = current_order
+        @order = current_order # UPDATE CURRENT ORDER ONLY
         @order_item = @order.order_items.find_by! id: params[:order_item_id]
-        # @order_item.update_attributes(order_item_params)
-        # @order_items = @order.order_items
+        # @order_items = @order.order_items Here is an idea of how all the item can be returned 
+        # rather tha individual
 
         if @order_item.update order_item_params
           render json: @order_item
@@ -32,9 +32,12 @@ module Api
       end
 
       def destroy
+        Rails.logger.debug params
+        Rails.logger.debug 'PARAMS FOR DESTROY'
+
         @order = current_order
-        @order_item = @order.order_items.find_by! id: params[:order_item_id]
-        @order_items = @order.order_items
+        @order_item = current_user.order_items.find_by! id: params[:order_item_id]
+        @order_items = current_user.order_items
 
         if @order_item.destroy
           render json: @order_items, status: 200

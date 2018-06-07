@@ -46,7 +46,7 @@ Rails.application.routes.draw do
       controller :order_items do
         post '/order_items', action: :create
         patch '/order_items/:order_item_id', action: :update
-        delete '/order_items/:order_item_id', action: :update
+        delete '/order_items/:order_item_id', action: :destroy
       end
     end
 
