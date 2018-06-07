@@ -9,9 +9,7 @@ module AuthenticationConcern
   def current_user
     return @current_user if defined?(@current_user)
     token = params["token"]
-    Rails.logger.debug("this is token: #{token}")
     user = User.find_by(id: params["user_id"])
-    Rails.logger.debug("this is user: #{user}")
     if user && user.authenticated?(token)
       @current_user = user
     end

@@ -10,10 +10,6 @@ module Api
       end
 
       def create
-        Rails.logger.debug params
-        Rails.logger.debug '@@@@@@@@@'
-        Rails.logger.debug '@@@@@@@@@'
-        Rails.logger.debug '@@@@@@@@@'
         @productAttribute = @product.product_attributes.build \
           name: product_attribute_params[:name],
           picture: product_attribute_params[:picture],

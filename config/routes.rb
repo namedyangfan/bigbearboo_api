@@ -37,6 +37,18 @@ Rails.application.routes.draw do
       end
     end
 
+    namespace :cart do
+      controller :orders do
+        get '/orders/:order_id', action: :show
+      end
+
+      controller :order_items do
+        post '/order_items', action: :create
+        patch '/order_items/:order_item_id', action: :update
+        delete '/order_items/:order_item_id', action: :update
+      end
+    end
+
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
