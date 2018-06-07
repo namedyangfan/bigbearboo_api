@@ -6,7 +6,10 @@ module Api
       def create
         Rails.logger.debug params
         @order = current_order
+        Rails.logger.debug 'this is current order'
+        Rails.logger.debug @order
         @order_item = @order.order_items.build(order_item_params)
+        Rails.logger.debug 'ITEMS BUILD'
         if(@order.save)
           render json: @order_item, status: 200
         else
@@ -30,7 +33,7 @@ module Api
 
       def destroy
         @order = current_order
-        @order_item = @order.order_items.find_by! id: :params[:order_item_id]
+        @order_item = @order.order_items.find_by! id: params[:order_item_id]
         @order_items = @order.order_items
 
         if @order_item.destroy

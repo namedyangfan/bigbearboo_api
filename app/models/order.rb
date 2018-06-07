@@ -1,9 +1,9 @@
 class Order < ApplicationRecord
-  belongs_to :order_status
+  belongs_to :order_status, optional: :true
   belongs_to :user
   has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items
-  before_validation :set_order_status
+  before_create :set_order_status
   before_save :update_subtotal
 
   def subtotal
