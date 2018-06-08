@@ -1,11 +1,11 @@
 module Api
   module Cart
     class OrdersController < ApplicationController
-      skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
+      skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy, :show]
 
       def show
         if (current_order.present?)
-          render json: @current_order
+          render json: OrderPresenter.new(@current_order,view_context).full_hash
         end
       end
 

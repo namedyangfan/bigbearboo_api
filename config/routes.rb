@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
     namespace :cart do
       controller :orders do
-        get '/orders/:order_id', action: :show
+        get '/orders', action: :show
         delete '/orders/:order_id', action: :destroy
       end
 
