@@ -14,8 +14,9 @@ class OrderItemPresenter < BasePresenter
     {
       order_item_id: id,
       product_id: id,
-      unit_price: unit_price,
-      quantity: quantity
+      unit_price: @view.number_with_precision(unit_price, :precision => 2),
+      quantity: quantity,
+      total_price: @view.number_with_precision(total_price, :precision => 2)
     }
   end
 

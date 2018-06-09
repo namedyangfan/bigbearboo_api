@@ -7,15 +7,16 @@ class OrderPresenter < BasePresenter
     {
       order_id: id,
       subtotal: subtotal,
+      tax: tax,
+      shipping: shipping,
+      total: @view.number_with_precision(total, :precision => 2),
     }
   end
 
   def full_hash
-    {
-      order_id: id,
-      subtotal: subtotal,
+    basic_hash.merge({
       order_items: order_item.try(:map,&:full_hash)
-    }
+    })
   end
 
 end

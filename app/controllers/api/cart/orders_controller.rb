@@ -1,6 +1,6 @@
 module Api
   module Cart
-    class OrdersController < ApplicationController
+    class OrdersController < ApiController
       skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy, :show]
 
       def show
