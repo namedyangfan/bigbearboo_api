@@ -6,8 +6,8 @@ class OrderPresenter < BasePresenter
   def basic_hash
     {
       order_id: id,
-      subtotal: subtotal,
-      tax: tax,
+      subtotal: @view.number_with_precision(subtotal, :precision => 2),
+      tax: @view.number_with_precision(tax, :precision => 2),
       shipping: shipping,
       total: @view.number_with_precision(total, :precision => 2),
     }

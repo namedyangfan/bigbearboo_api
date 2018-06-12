@@ -5,7 +5,7 @@ module Api
 
       def show
         if (current_order.present?)
-          render json: OrderPresenter.new(@current_order,view_context).full_hash
+          render json: OrderPresenter.new(@current_order,view_context).full_hash, status: 200
         end
       end
 

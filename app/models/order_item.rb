@@ -23,9 +23,6 @@ class OrderItem < ApplicationRecord
 
 private
   def product_present
-      Rails.logger.debug 'CHECK IF PRODUCT EXIST'
-      Rails.logger.debug order.id
-
     if product.nil?
       errors.add(:product, "is not valid or is not active.")
     end

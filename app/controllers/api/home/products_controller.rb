@@ -11,6 +11,14 @@ module Api
         render json: products_basic_hash
       end 
 
+      def index_category
+        products = Product.where category_id: product_params[:category_id]
+
+        products_basic_hash = products.map{ |product| ProductPresenter.new(product, view_context).basic_hash}
+
+        render json: products_basic_hash
+      end 
+
       def show
         product = Product.find_by! id: params[:product_id]
 
@@ -22,7 +30,7 @@ module Api
       private
 
       def product_params
-        params.permit(:product_id)
+        params.permit(:product_id, :category_id)
       end
 
     end

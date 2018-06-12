@@ -11,7 +11,7 @@ module Api
         @order_item = @order.order_items.build(order_item_params)
         Rails.logger.debug 'ITEMS BUILD'
         if(@order.save)
-          render json: @order_item, status: 200
+          render json: @order.order_items, status: 200
         else
           render json: {:errors => @order.errors.full_messages}, status: :unprocessable_entity
         end

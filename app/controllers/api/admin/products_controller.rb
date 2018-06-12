@@ -27,7 +27,7 @@ module Api
           name: product_params[:name],
           description: product_params[:description],
           detail: product_params[:detail],
-          category: product_params[:category],
+          category_id:product_params[:category_id],
           picture: product_params[:picture]
 
         if product.save
@@ -58,7 +58,7 @@ module Api
       private
 
       def product_params
-        params.permit(:name, :description, :detail, :category, :picture, :price)
+        params.permit(:name, :description, :detail, :category_id, :picture, :price)
       end
 
     end
