@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
   belongs_to :order_status, optional: :true
-  belongs_to :category
   belongs_to :user
   has_many :order_items, dependent: :destroy
   has_many :products, through: :order_items

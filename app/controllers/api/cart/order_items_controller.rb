@@ -13,6 +13,7 @@ module Api
         if(@order.save)
           render json: @order.order_items, status: 200
         else
+          Rails.logger.debug @order.errors.full_messages
           render json: {:errors => @order.errors.full_messages}, status: :unprocessable_entity
         end
 
