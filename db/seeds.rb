@@ -16,3 +16,7 @@ Category.delete_all
 Category.create! id: 1, name: "brides"
 Category.create! id: 2, name: "bridesmaids"
 Category.create! id: 3, name: "accessories"
+
+Role.delete_all
+Role.create! id: 1, name: "admin"
+Role.create! id: 2, name: "user"
