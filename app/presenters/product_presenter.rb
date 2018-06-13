@@ -7,8 +7,8 @@ class ProductPresenter < BasePresenter
     {
       product_id: id,
       name: name,
-      description: description,
-      category: category,
+      price: price,
+      category: @model.category&.name,
       picture: picture
     }
   end

@@ -33,7 +33,21 @@ Rails.application.routes.draw do
     namespace :home do
       controller :products do
         get '/products', action: :index
+        get '/products/category/:category_id', action: :index_category
         get '/products/:product_id', action: :show
+      end
+    end
+
+    namespace :cart do
+      controller :orders do
+        get '/orders', action: :show
+        delete '/orders/:order_id', action: :destroy
+      end
+
+      controller :order_items do
+        post '/order_items', action: :create
+        patch '/order_items/:order_item_id', action: :update
+        delete '/order_items/:order_item_id', action: :destroy
       end
     end
 

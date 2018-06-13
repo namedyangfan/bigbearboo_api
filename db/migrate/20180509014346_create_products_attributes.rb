@@ -4,7 +4,6 @@ class CreateProductsAttributes < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :description
       t.text :detail
-      t.integer :category
       t.string :picture
       t.float :price
 
