@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :order_items, through: :orders
 
   before_create :set_user_role
-  
+
   # Returns the hash digest of the given string.
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -40,6 +40,10 @@ class User < ApplicationRecord
     # Forgets a user.
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def role?(role)
+    self.role.name.underscore.to_sym == :admin
   end
 
 private
