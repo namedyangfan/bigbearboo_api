@@ -23,7 +23,7 @@ module Api
       end
 
       def authenticate
-        render json: UserPresenter.new(@current_user, view_context).basic_hash
+        render json: UserPresenter.new(@current_user, view_context).auth_hash
       end
     end
   end

@@ -12,7 +12,8 @@ class UserPresenter < BasePresenter
       user_id:    id,
       user_name:  name,
       email: email,
-      token: remember_token
+      token: remember_token,
+      role: @model.role.name
     }
   end
 end
