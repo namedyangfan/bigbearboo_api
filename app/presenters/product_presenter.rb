@@ -16,7 +16,8 @@ class ProductPresenter < BasePresenter
   def full_hash
     basic_hash.merge({
       detail: detail,
-      price: price
+      price: price,
+      status: status
     })
   end
 
