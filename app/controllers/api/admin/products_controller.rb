@@ -49,7 +49,7 @@ module Api
 
       def publish_product
         if @product.update(:status=>Product::PUBLISHED)
-          render json: @product
+          render json: ProductPresenter.new(@product,view_context).basic_hash
         else
           render json: { error: @product.errors.full_messages.to_sentence }, status: 403
         end
@@ -57,7 +57,7 @@ module Api
 
       def draft_product
         if @product.update(:status=>Product::DRAFT)
-          render json: @product
+          render json: ProductPresenter.new(@product,view_context).basic_hash
         else
           render json: { error: @product.errors.full_messages.to_sentence }, status: 403
         end
