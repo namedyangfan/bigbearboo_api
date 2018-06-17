@@ -1,8 +1,8 @@
 module Api
   module Admin
     class ApiController < ApplicationController
-      before_action :check_admin_permission
       before_action :authenticate_current_user
+      before_action :check_admin_permission
         
       def get_product
         if params[:product_attribute_id].present?

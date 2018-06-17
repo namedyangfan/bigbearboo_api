@@ -8,6 +8,7 @@ class ProductPresenter < BasePresenter
       product_id: id,
       name: name,
       price: price,
+      status: status_label,
       category: @model.category&.name,
       picture: picture
     }
@@ -16,8 +17,6 @@ class ProductPresenter < BasePresenter
   def full_hash
     basic_hash.merge({
       detail: detail,
-      price: price,
-      status: status
     })
   end
 
