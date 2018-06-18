@@ -35,3 +35,14 @@ Size.create! id: 10, name: "20", category_id: "1"
 Size.create! id: 11, name: "22", category_id: "1"
 Size.create! id: 12, name: "24", category_id: "1"
 Size.create! id: 13, name: "26", category_id: "1"
+
+products = Product.all
+sizes = Size.where(:category_id => 1)
+products.each do |p|
+  if p.category.name == "brides"
+    sizes.each do |s|
+      p.product_sizes.build(:size_id => s.id)
+      p.save
+    end
+  end
+end
