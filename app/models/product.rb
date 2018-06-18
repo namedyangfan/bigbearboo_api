@@ -5,8 +5,6 @@ class Product < ApplicationRecord
 
   has_many :product_attributes, dependent: :destroy
   has_many :order_items, dependent: :destroy
-  has_many :product_sizes
-  has_many :size, through: :product_sizes
 
   belongs_to :category
 
