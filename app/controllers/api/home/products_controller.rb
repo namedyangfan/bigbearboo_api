@@ -4,7 +4,7 @@ module Api
       skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
 
       def index
-        products = Product.order(created_at: :desc).page product_params[:page]
+        products = Product.where(:status => Product::PUBLISHED).order(created_at: :desc).page product_params[:page]
 
         products_basic_hash = products.map{ |product| ProductPresenter.new(product, view_context).basic_hash}
 
@@ -12,7 +12,7 @@ module Api
       end 
 
       def index_category
-        products = Product.where category_id: product_params[:category_id]
+        products = Product.where(category_id: product_params[:category_id], status: Product::PUBLISHED)
 
         products_basic_hash = products.map{ |product| ProductPresenter.new(product, view_context).basic_hash}
 

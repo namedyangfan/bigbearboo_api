@@ -19,6 +19,8 @@ Rails.application.routes.draw do
         get '/products', action: :index
         post '/products', action: :create
         patch '/products/:product_id', action: :update
+        patch '/products/publish/:product_id', action: :publish_product
+        patch '/products/draft/:product_id', action: :draft_product
         delete '/products/:product_id', action: :destroy
       end
 
