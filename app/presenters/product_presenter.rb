@@ -8,7 +8,7 @@ class ProductPresenter < BasePresenter
     @model.category.sizes.map{|s| {:value => s.id, :label=> s.name}}
   end
 
-  def basic_hash
+  def simple_hash
     {
       product_id: id,
       name: name,
@@ -16,8 +16,13 @@ class ProductPresenter < BasePresenter
       status: status_label,
       category: @model.category&.name,
       picture: picture,
-      sizes: get_sizes
     }
+  end
+
+  def basic_hash
+    simple_hash.merge({
+      sizes: get_sizes
+    })
   end
 
   def full_hash
