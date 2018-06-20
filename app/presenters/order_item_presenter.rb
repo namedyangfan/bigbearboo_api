@@ -16,6 +16,7 @@ class OrderItemPresenter < BasePresenter
       product_id: id,
       unit_price: @view.number_with_precision(unit_price, :precision => 2),
       quantity: quantity,
+      size: @model.size&.name,
       total_price: @view.number_with_precision(total_price, :precision => 2)
     }
   end
@@ -25,7 +26,7 @@ class OrderItemPresenter < BasePresenter
       product_name: @model.product.name,
       product_picture: @model.product.picture,
       product_price: @model.product.price,
-      product_attributes: product_attribute
+      product_attributes: product_attribute,
     })
   end
 end
