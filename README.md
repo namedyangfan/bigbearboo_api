@@ -1,24 +1,26 @@
-# README
+# PROJECT Bigbearboo
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Summary
 
-Things you may want to cover:
+The purpose of this project is for the arthor to practice both frontend and backend skills.
+This repository **bigbearboo_api** is the backend for the project [bigbearboo](https://github.com/namedyangfan/bigbearboo)
 
-* Ruby version
+## Requirements
 
-* System dependencies
+This project currently works with:
 
-* Configuration
+* Rails 5.1.x
+* PostgreSQL
 
-* Database creation
+If you need help setting up a Ruby development environment, check out my [Rails OS X Setup Guide](https://mattbrictson.com/rails-osx-setup-guide).
 
-* Database initialization
+## Install
 
-* How to run the test suite
+    $ git https://github.com/namedyangfan/bigbearboo_api
+    $ cd bigbearboo_api
+    $ gem install bundler
+    $ bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+## Start & watch
 
-* Deployment instructions
-
-* ...
+    $ rails start
