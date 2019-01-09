@@ -4,16 +4,11 @@ module Api
       skip_before_action :verify_authenticity_token, only: [:create, :update, :destroy]
 
       def create
-        Rails.logger.debug params
         @order = current_order
-        Rails.logger.debug 'this is current order'
-        Rails.logger.debug @order
         @order_item = @order.order_items.build(order_item_params)
-        Rails.logger.debug 'ITEMS BUILD'
         if(@order.save)
           render json: @order.order_items, status: 200
         else
-          Rails.logger.debug @order.errors.full_messages
           render json: {:errors => @order.errors.full_messages}, status: :unprocessable_entity
         end
 
@@ -49,7 +44,7 @@ module Api
       end
     private
       def order_item_params
-        params.permit(:quantity, :product_id, :product_attribute_id)
+        params.permit(:quantity, :product_id, :product_attribute_id, :size_id)
       end
     end
   end

@@ -1,6 +1,7 @@
 class OrderItem < ApplicationRecord
   belongs_to :product
   belongs_to :order
+  belongs_to :size, optional: :true
   belongs_to :product_attribute, optional: :true
 
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }

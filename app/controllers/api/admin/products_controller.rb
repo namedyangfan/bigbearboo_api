@@ -7,11 +7,11 @@ module Api
       def index
         products = Product.all
 
-        products_basic_hash = products.map{ |product| ProductPresenter.new(product, view_context).basic_hash}
-        Rails.logger.debug(ProductPresenter.new(Product.first,view_context).basic_hash.keys)
+        products_basic_hash = products.map{ |product| ProductPresenter.new(product, view_context).simple_hash}
+        Rails.logger.debug(ProductPresenter.new(Product.first,view_context).simple_hash.keys)
 
         data = {
-          :keys=> ProductPresenter.new(Product.first,view_context).basic_hash.keys, 
+          :keys=> ProductPresenter.new(Product.first,view_context).simple_hash.keys, 
           :products=>products_basic_hash
         }
 

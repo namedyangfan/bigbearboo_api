@@ -3,15 +3,26 @@ class ProductPresenter < BasePresenter
     @model.product_attributes.map{|product_attribute| ProductAttributePresenter.new(product_attribute,@view).full_hash}
   end
 
-  def basic_hash
+  def get_sizes
+    # value and label is reqired by react-dropdown to display options
+    @model.category.sizes.map{|s| {:value => s.id, :label=> s.name}}
+  end
+
+  def simple_hash
     {
       product_id: id,
       name: name,
       price: price,
       status: status_label,
       category: @model.category&.name,
-      picture: picture
+      picture: picture,
     }
+  end
+
+  def basic_hash
+    simple_hash.merge({
+      sizes: get_sizes
+    })
   end
 
   def full_hash
